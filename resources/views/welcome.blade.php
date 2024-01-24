@@ -12,7 +12,7 @@
 
     <div class="container mt-3">
         <h1>Ваша заявка</h1>
-        <form action="http://127.0.0.1:8000/api/v1/send-request" method="POST" id="application-form">
+        <form action="http://127.0.0.1:8000/api/v1/send-request" method="POST" id="applicationForm">
             @csrf
             <div class="mb-3">
                 <label for="username" class="form-label">Ваше имя:</label>
@@ -27,15 +27,16 @@
                 <textarea name="message" class="form-control" id="message" required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Отправить</button>
         </form>
+        <a class="btn btn-primary mt-3" href="/admin">Все заявки</a>
     </div>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script>
 
-        $("#application-form").submit(function (e){
+        $("#applicationForm").submit(function (e){
             e.preventDefault();
 
             const apiURL = this.getAttribute('action');
@@ -57,7 +58,7 @@
                 },
                 success: function( response ) {
                     alert(response.result)
-                    $("#application-form")[0].reset();
+                    $("#applicationForm")[0].reset();
                 }
             });
         })

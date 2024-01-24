@@ -17,12 +17,12 @@ return new class extends Migration
             $table->text('email')->nullable('false');
 
             $table->enum('status', ['Active', 'Resolved'])
-                ->default('Resolved');
+                ->default('Active');
 
             $table->text('message');
             $table->text('comment')->nullable();
-
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
